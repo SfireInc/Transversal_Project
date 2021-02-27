@@ -1,0 +1,56 @@
+version: '3.1'
+
+networks:
+  bdd:
+
+volumes:
+  dbdata:
+  grafanadata:
+
+services:
+  db: 
+    image: "mysql:8.0"
+    container_name: "DC_MySQL_PT"
+    restart: "always"
+    volumes:
+    - "dbdata:/var/lib/mysql"
+    - "./mysql/script:/docker-entrypoint-initdb.d/"
+    environment:
+      MYSQL_ROOT_PASSWORD: 4IRC
+    networks:
+    - bdd
+
+  grafana: 
+    image: "grafana/grafana:7.4.3"
+    container_name: "DC_Grafana_PT"
+    restart: "always"
+    volumes:
+    - "grafanadata:/var/lib/grafana"
+    ports:
+    - "10552:3000"
+    networks:
+    - bdd
+
+  phpmyadmin:
+    image: "phpmyadmin:5.1.0"
+    container_name: "DC_PhpMyAdmin_PT"
+    restart: "always"
+    environment:
+    - "PMA_ARBITRARY=1"
+    ports:
+    - "10550:80"
+    networks:
+    - bdd
+  
+  api:
+    build:
+      context: "./python/"
+      dockerfile: DockerFiles
+    image: "api_pt"
+    container_name: "DC_Api_PT"
+    restart: "always"
+    ports:
+    - "10551:80"
+    networks:
+    - bdd
+  
