@@ -128,7 +128,7 @@ CREATE TABLE `Truck` (
 --
 
 INSERT INTO `Truck` (`idTruck`, `idFireStation`, `idFire`, `statement`, `coordX`, `coordY`) VALUES
-(251, 25, NULL, 2, 2, 5),
+(251, 25, NULL, 1, 2, 5),
 (252, 25, NULL, 1, 2, 5),
 (581, 58, NULL, 1, 5, 8),
 (582, 58, NULL, 1, 5, 8);
