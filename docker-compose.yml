@@ -27,7 +27,7 @@ services:
     volumes:
     - "grafanadata:/var/lib/grafana"
     ports:
-    - "10552:3000"
+    - "10502:3000"
     networks:
     - bdd
 
@@ -38,19 +38,19 @@ services:
     environment:
     - "PMA_ARBITRARY=1"
     ports:
-    - "10550:80"
+    - "10500:80"
     networks:
     - bdd
   
   api:
     build:
       context: "./python/"
-      dockerfile: DockerFiles
+      dockerfile: DockerFile
     image: "api_pt"
     container_name: "DC_Api_PT"
     restart: "always"
     ports:
-    - "10551:80"
+    - "10501:80"
     networks:
     - bdd
   
