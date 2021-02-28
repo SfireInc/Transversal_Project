@@ -45,7 +45,7 @@ services:
   api:
     build:
       context: "./python/"
-      dockerfile: DockerFile
+      dockerfile: api.DockerFile
     image: "api_pt"
     container_name: "DC_Api_PT"
     restart: "always"
@@ -53,4 +53,42 @@ services:
     - "10501:80"
     networks:
     - bdd
+    depends_on:
+    - "db"
+
+  iot:
+    build:
+      context: "./python/"
+      dockerfile: iot.DockerFile
+    image: "iot_pt"
+    container_name: "DC_Iot_PT"
+    restart: "always"
+    networks:
+    - bdd
+    depends_on:
+    - "api"
+  
+  simulateur:
+    build:
+      context: "./java/"
+      dockerfile: simu.DockerFile
+    image: "simulateur_pt"
+    container_name: "DC_Simulateur_PT"
+    restart: "always"
+    networks:
+    - bdd
+    depends_on:
+    - "db"
+  
+  emergency:
+    build:
+      context: "./java/"
+      dockerfile: emergency.DockerFile
+    image: "emergency_pt"
+    container_name: "DC_Emergency_PT"
+    restart: "always"
+    networks:
+    - bdd
+    depends_on:
+    - "db"
   

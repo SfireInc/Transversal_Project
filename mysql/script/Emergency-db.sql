@@ -58,13 +58,13 @@ CREATE TABLE `Fireman` (
 INSERT INTO `Fireman` (`idFireman`, `name`, `surname`, `idTruck`) VALUES
 ('antgon', 'Anthony', 'Gonnet', 582),
 ('antpou', 'Antonin', 'Poulard', 252),
-('bearol', 'Béatrice', 'Rollet', 252),
+('bearol', 'Beatrice', 'Rollet', 252),
 ('chagau', 'Charlotte', 'Gauthier', 581),
 ('flacha', 'Flavian', 'Chapuis', 251),
 ('lormer', 'Loris', 'Mercier', 581),
 ('maxris', 'Maxime', 'Riss', 251),
-('rapfou', 'Raphaël', 'Fourel', 252),
-('thenot', 'Théo', 'Notin', 581),
+('rapfou', 'Raphael', 'Fourel', 252),
+('thenot', 'Theo', 'Notin', 581),
 ('thobea', 'Thomas', 'Beaumont', 582),
 ('thooud', 'Thomas', 'Oudard', 251);
 

@@ -83,13 +83,13 @@ def emergency_connection():
 
 def get_200(self, content):
     self.send_response(200)
-    self.send_header('Content-type','application/json')
+    self.send_header("Access-Control-Allow-Origin", "*")
     self.end_headers()
     self.wfile.write(json.dumps(content, indent=4).encode())
 
 def get_404(self):
     self.send_response(404)
-    self.send_header('Content-type','application/json')
+    self.send_header('Content-type', 'application/json')
     self.end_headers()
     self.wfile.write("Error 404 - Content not found".encode())
 
@@ -145,7 +145,7 @@ class myHandler(BaseHTTPRequestHandler):
         elif self.path == '/Emergency-db/Fireman':
             emergency_db = emergency_connection()
             get_EmergencyDBFireman(self, emergency_db)
-        if self.path == '/Emergency-db/Fire':
+        elif self.path == '/Emergency-db/Fire':
             emergency_db = emergency_connection()
             get_EmergencyDBFire(self, emergency_db)
         elif self.path == '/Simulateur-db':
