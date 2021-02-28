@@ -23,13 +23,31 @@ simulation = {
 
 emergency = {
     "database": "Emergency-db",
+    "Truck": (
+        "SELECT Truck.idTruck, Statement.nameStatement, Truck.coordX, Truck.coordY, Truck.idFire, FireStation.nameFireStation " +
+        "FROM Truck " +
+        "INNER JOIN Statement " +
+        "ON Truck.statement = Statement.idStatement " +
+        "INNER JOIN FireStation " +
+        "ON Truck.idFireStation = FireStation.idFireStation"
+        ),
     "FireStation": (
-        "SELECT FireStation.idFireStation, FireStation.nameFireStation, FireStation.coordX, FireStation.coordY, Truck.idTruck, Truck.idFire, Fireman.idFireman, Fireman.name, Fireman.surname " +
-        "FROM FireStation " +
+        "SELECT FireStation.idFireStation, FireStation.nameFireStation, FireStation.coordX, FireStation.coordY " +
+        "FROM FireStation"
+        ),
+    "Fireman": (
+        "SELECT Fireman.idFireman, Fireman.name, Fireman.surname, Statement.nameStatement, Fireman.idTruck, FireStation.nameFireStation, Truck.coordX, Truck.coordY " +
+        "FROM Fireman " +
         "INNER JOIN Truck " +
-        "ON FireStation.idFireStation = Truck.idFireStation " +
-        "INNER JOIN Fireman " +
-        "ON Truck.idTruck = Fireman.idTruck"
+        "ON Fireman.idTruck = Truck.idTruck " +
+        "INNER JOIN Statement " +
+        "ON Truck.statement = Statement.idStatement " +
+        "INNER JOIN FireStation " +
+        "ON Truck.idFireStation = FireStation.idFireStation "
+        ),
+    "Fire": (
+        "SELECT Fire.idFire, Fire.coordX, Fire.coordY, Fire.intensity " +
+        "FROM Fire"
         )
     }
 
@@ -83,9 +101,33 @@ def get_SimulationDB(self, simulation_db):
 
     get_200(self, format_Content(simulation_content, simulation_desc))
 
-def get_EmergencyDB(self, emergency_db):
+def get_EmergencyDBTruck(self, emergency_db):
+    emergency_db_requester = emergency_db.cursor()
+    emergency_db_requester.execute(emergency['Truck'])
+    emergency_content = emergency_db_requester.fetchall()
+    emergency_desc = emergency_db_requester.description
+
+    get_200(self, format_Content(emergency_content, emergency_desc))
+
+def get_EmergencyDBFireStation(self, emergency_db):
     emergency_db_requester = emergency_db.cursor()
     emergency_db_requester.execute(emergency['FireStation'])
+    emergency_content = emergency_db_requester.fetchall()
+    emergency_desc = emergency_db_requester.description
+
+    get_200(self, format_Content(emergency_content, emergency_desc))
+
+def get_EmergencyDBFireman(self, emergency_db):
+    emergency_db_requester = emergency_db.cursor()
+    emergency_db_requester.execute(emergency['Fireman'])
+    emergency_content = emergency_db_requester.fetchall()
+    emergency_desc = emergency_db_requester.description
+
+    get_200(self, format_Content(emergency_content, emergency_desc))
+
+def get_EmergencyDBFire(self, emergency_db):
+    emergency_db_requester = emergency_db.cursor()
+    emergency_db_requester.execute(emergency['Fire'])
     emergency_content = emergency_db_requester.fetchall()
     emergency_desc = emergency_db_requester.description
 
@@ -94,9 +136,18 @@ def get_EmergencyDB(self, emergency_db):
 class myHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        if self.path == '/Emergency-db':
+        if self.path == '/Emergency-db/Truck':
             emergency_db = emergency_connection()
-            get_EmergencyDB(self, emergency_db)
+            get_EmergencyDBTruck(self, emergency_db)
+        elif self.path == '/Emergency-db/FireStation':
+            emergency_db = emergency_connection()
+            get_EmergencyDBFireStation(self, emergency_db)
+        elif self.path == '/Emergency-db/Fireman':
+            emergency_db = emergency_connection()
+            get_EmergencyDBFireman(self, emergency_db)
+        if self.path == '/Emergency-db/Fire':
+            emergency_db = emergency_connection()
+            get_EmergencyDBFire(self, emergency_db)
         elif self.path == '/Simulateur-db':
             simulation_db = simulation_connection()
             get_SimulationDB(self, simulation_db)
