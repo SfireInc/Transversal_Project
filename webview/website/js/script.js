@@ -6,9 +6,9 @@ var urlShort="";
 function initLoad()
 {   
     // Récuperation des camions via api
-    fetch("http://localhost:10501/Emergency-db/Truck").then(response => response.json()).then(response => {
+    fetch("http://api/Emergency-db/Truck").then(response => response.json()).then(response => {
         truck=response;
-        fetch("http://localhost:10501/Simulateur-db").then(response => response.json()).then(response => {
+        fetch("http://api/Simulateur-db").then(response => response.json()).then(response => {
         fires=response;
         console.log(fires)
         chargementTemplate();
