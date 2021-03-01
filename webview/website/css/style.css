@@ -1,0 +1,84 @@
+
+/* Général */
+p {
+    margin:0px;
+    padding:0.2vh;
+    font-size: 0.8em;
+}
+header{
+    color: #910D73;
+    text-align: center;
+    font-weight: bold;
+    width: 80vw;
+    margin-left:10vw;
+
+}
+
+map {
+    width: 100%;
+    height: 100%;
+}
+
+.mapZone{
+    width: 1280px;
+    height: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    border:2px solid black;
+    z-index: 1;
+}
+
+/*Zone des points de feu*/
+#containeFire{
+    width: 1280px;
+    height: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+  }
+
+/* Camions */
+.dotTruck {
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(35, 138, 4, 0.908);
+    border-radius: 50%;
+  }
+
+/* Point de feu */
+.dotFire {
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(138, 4, 104, 0.908);
+    border-radius: 50%;
+  }
+.dotFire:hover + .messageFire { 
+    display: block; 
+}
+  .fireicon{
+    height: 5vh;
+    width: 5vh;
+    color : rgba(138, 4, 104, 0.908);
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    z-index: 1;
+}
+.fireicon:hover + .messageFire { 
+    display: block; 
+}
+/* Message de feu */
+.messageFire{
+    width: 12vw;
+    height: 12vh;
+    background-color: rgba(166, 176, 187, 0.705);
+    display: none;    
+    z-index: 5;
+}
+.titleMessageFire{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 1vh;
+}
+

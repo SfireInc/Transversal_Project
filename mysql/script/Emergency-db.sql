@@ -56,17 +56,17 @@ CREATE TABLE `Fireman` (
 --
 
 INSERT INTO `Fireman` (`idFireman`, `name`, `surname`, `idTruck`) VALUES
-('antgon', 'Anthony', 'Gonnet', 582),
-('antpou', 'Antonin', 'Poulard', 252),
-('bearol', 'Beatrice', 'Rollet', 252),
-('chagau', 'Charlotte', 'Gauthier', 581),
-('flacha', 'Flavian', 'Chapuis', 251),
-('lormer', 'Loris', 'Mercier', 581),
-('maxris', 'Maxime', 'Riss', 251),
-('rapfou', 'Raphael', 'Fourel', 252),
-('thenot', 'Theo', 'Notin', 581),
-('thobea', 'Thomas', 'Beaumont', 582),
-('thooud', 'Thomas', 'Oudard', 251);
+('antgon', 'Anthony', 'Gonnet', 852),
+('antpou', 'Antonin', 'Poulard', 522),
+('bearol', 'Beatrice', 'Rollet', 522),
+('chagau', 'Charlotte', 'Gauthier', 851),
+('flacha', 'Flavian', 'Chapuis', 521),
+('lormer', 'Loris', 'Mercier', 851),
+('maxris', 'Maxime', 'Riss', 521),
+('rapfou', 'Raphael', 'Fourel', 522),
+('thenot', 'Theo', 'Notin', 851),
+('thobea', 'Thomas', 'Beaumont', 852),
+('thooud', 'Thomas', 'Oudard', 521);
 
 -- --------------------------------------------------------
 
@@ -86,8 +86,8 @@ CREATE TABLE `FireStation` (
 --
 
 INSERT INTO `FireStation` (`idFireStation`, `nameFireStation`, `coordX`, `coordY`) VALUES
-(25, 'Charpennes', 2, 5),
-(58, 'Gratte Ciel', 5, 8);
+(52, 'Charpennes', 5, 2),
+(85, 'Gratte Ciel', 8, 5);
 
 -- --------------------------------------------------------
 
@@ -128,10 +128,10 @@ CREATE TABLE `Truck` (
 --
 
 INSERT INTO `Truck` (`idTruck`, `idFireStation`, `idFire`, `statement`, `coordX`, `coordY`) VALUES
-(251, 25, NULL, 1, 2, 5),
-(252, 25, NULL, 1, 2, 5),
-(581, 58, NULL, 1, 5, 8),
-(582, 58, NULL, 1, 5, 8);
+(521, 52, NULL, 1, 5, 2),
+(522, 52, NULL, 1, 5, 2),
+(851, 85, NULL, 1, 8, 5),
+(852, 85, NULL, 1, 8, 5);
 
 --
 -- Index pour les tables déchargées

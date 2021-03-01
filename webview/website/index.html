@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js"></script>
+		<title> Emergency Manager</title>
+	</head>
+
+    <body onload="initLoad()">
+        <header >
+            <h1>Emergency</h1>
+        </header>
+
+        <!--La carte de la simulation des feux -->	
+        <div class="mapZone" id="mapdiv">
+            <img src="ressources/map.PNG" class="map">
+        </div>
+
+        <!--Affichage des boules de feu -->	
+        <div id="containeFire"> 
+            <template id="templateFire">
+                <div class="messageFire">
+                    <p class="titleMessageFire">idFire {{monId}}</p>
+                    <p>&nbsp;coordX : {{longitude}}</p>
+                    <p>&nbsp;coordY : {{latitude}}</p>
+                    <p>&nbsp;intensity : {{intensity}}</p>
+                </div>
+            </template>
+
+            <template id="templateDotFire">
+                <div class="dotFire"></div>
+            </template>
+            <template id="templateDotTruck">
+                <div class="dotTruck"></div>
+            </template>
+        </div>
+	</body>
+</html>

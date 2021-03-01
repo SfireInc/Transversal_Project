@@ -92,3 +92,15 @@ services:
     depends_on:
     - "db"
   
+  httpd:
+    build:
+      context: "./webview/"
+      dockerfile: DockerFile
+    image: "emergency-view_pt"
+    container_name: "DC_View_Emergency_PT"
+    restart: "always"
+    ports:
+    - "80:80"
+    networks: 
+    - bdd
+  
